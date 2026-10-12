@@ -113,6 +113,7 @@ def judge_binary(question, answer, reference, *, client=None):
     response = client.chat.completions.create(
         model=JUDGE_MODEL, temperature=0,
         response_format={"type": "json_object"},
+        max_tokens=600,
         messages=[
             {"role": "system", "content": BINARY_SYSTEM_PROMPT},
             {"role": "user", "content": json.dumps(
